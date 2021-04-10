@@ -48,10 +48,7 @@ namespace Core31StarterKit.Api.Extensions
             //TODO: configure other storage providers such as sql
             services.AddHealthChecksUI().AddInMemoryStorage();
 
-        }
-
-
-        
+        }        
 
 
     }
