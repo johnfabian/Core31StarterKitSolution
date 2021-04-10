@@ -1,4 +1,5 @@
 using Core31StarterKit.Api.Extensions;
+using Core31StarterKit.Api.Settings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,7 @@ namespace Core31StarterKit.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //TODO: dbcontext 
+             //TODO: dbcontext 
 
             //TODO: shared services
 

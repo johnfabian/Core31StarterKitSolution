@@ -24,8 +24,8 @@ namespace Core31StarterKit.Api.Extensions
         {
             app.UseHealthChecksUI(options =>
             {
-                options.UIPath = "/healthchecks-ui";
-                options.ApiPath = "/health";
+                options.UIPath = "/healthcheck-ui";
+                options.ApiPath = "/healthcheck";
             });
            
         }

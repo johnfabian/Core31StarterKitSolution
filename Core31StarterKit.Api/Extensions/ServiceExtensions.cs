@@ -10,6 +10,7 @@ namespace Core31StarterKit.Api.Extensions
 {
     public static class ServiceExtensions
     {
+        
         public static void AddSwaggerExtension(this IServiceCollection services)
         {
             services.AddSwaggerGen(c =>
@@ -42,7 +43,6 @@ namespace Core31StarterKit.Api.Extensions
 
         public static void AddHealthChecksExtension(this IServiceCollection services)
         {
-
             services.AddHealthChecks();
 
             //TODO: configure other storage providers such as sql
