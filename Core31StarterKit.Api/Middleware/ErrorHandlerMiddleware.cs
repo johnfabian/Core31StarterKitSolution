@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace Core31StarterKit.Api.Middleware
 {
    
-
+    //TODO: Add Global Error Handling
     
 }
