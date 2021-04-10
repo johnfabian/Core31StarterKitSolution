@@ -40,5 +40,19 @@ namespace Core31StarterKit.Api.Extensions
         }
 
 
+        public static void AddHealthChecksExtension(this IServiceCollection services)
+        {
+
+            services.AddHealthChecks();
+
+            //TODO: configure other storage providers such as sql
+            services.AddHealthChecksUI().AddInMemoryStorage();
+
+        }
+
+
+        
+
+
     }
 }

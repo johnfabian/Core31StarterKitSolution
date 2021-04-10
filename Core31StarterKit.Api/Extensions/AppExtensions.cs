@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace Core31StarterKit.Api.Extensions
 {
     public static class AppExtensions
@@ -15,7 +16,19 @@ namespace Core31StarterKit.Api.Extensions
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Core31StarterKit.WebApi");
             });
-        }       
+
+        }
+
+
+        public static void UseHealthChecksExtension(this IApplicationBuilder app)
+        {
+            app.UseHealthChecksUI(options =>
+            {
+                options.UIPath = "/healthchecks-ui";
+                options.ApiPath = "/health";
+            });
+           
+        }
 
     }
 }

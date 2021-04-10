@@ -39,7 +39,7 @@ namespace Core31StarterKit.Api
             services.AddVersioningExtension();
 
             //healthchecks
-            services.AddHealthChecks();
+            services.AddHealthChecksExtension();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,7 +68,8 @@ namespace Core31StarterKit.Api
             //TODO: Add Error Handling
 
             //healthchecks
-            app.UseHealthChecks("/health");
+            app.UseHealthChecksExtension();
+           
 
             //controllers
             app.UseEndpoints(endpoints =>
