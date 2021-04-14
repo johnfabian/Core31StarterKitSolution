@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Core31StarterKit.Api.Settings;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System;
@@ -11,15 +13,17 @@ namespace Core31StarterKit.Api.Extensions
     public static class ServiceExtensions
     {
         
-        public static void AddSwaggerExtension(this IServiceCollection services)
+        public static void AddSwaggerExtension(this IServiceCollection services, IConfiguration configuration)
         {
+            var swaggerSettings = configuration.GetSection(nameof(SwaggerSettings)).Get<SwaggerSettings>();
+
             services.AddSwaggerGen(c =>
             {
                 //simple configuration, add auth if using tokens            
-                c.SwaggerDoc("v1", new OpenApiInfo
+                c.SwaggerDoc(swaggerSettings.Version, new OpenApiInfo
                 {
-                    Version = "v1",
-                    Title = "Core31StarterKit.Api"
+                    Version = swaggerSettings.Version,
+                    Title = swaggerSettings.Title
                 });
             });
         }

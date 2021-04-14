@@ -10,7 +10,7 @@ namespace Core31StarterKit.Api.Controllers
     [ApiVersion("1.0")]
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : BaseApiController
+    public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
         {

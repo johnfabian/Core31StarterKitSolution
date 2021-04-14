@@ -27,12 +27,14 @@ namespace Core31StarterKit.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-             //TODO: dbcontext 
+            //TODO: dbcontext 
 
             //TODO: shared services
 
+           
+
             //swagger
-            services.AddSwaggerExtension();
+            services.AddSwaggerExtension(Configuration);
 
             //controllers
             services.AddControllers();
@@ -51,6 +53,9 @@ namespace Core31StarterKit.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                //swagger
+                app.UseSwaggerExtension(Configuration);
             }
 
             //https redirect (uncomment to enable)
@@ -66,14 +71,12 @@ namespace Core31StarterKit.Api
 
             //authorization (uncomment to enable)
             //app.UseAuthorization();
-
-            //swagger
-            app.UseSwaggerExtension();
+                                   
 
             //TODO: Add Error Handling
 
             //healthchecks
-            app.UseHealthChecksExtension();
+            app.UseHealthChecksExtension(Configuration);
            
 
             //controllers

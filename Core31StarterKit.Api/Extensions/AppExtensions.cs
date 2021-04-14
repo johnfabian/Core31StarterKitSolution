@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Core31StarterKit.Api.Settings;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,25 +11,28 @@ namespace Core31StarterKit.Api.Extensions
 {
     public static class AppExtensions
     {
-        public static void UseSwaggerExtension(this IApplicationBuilder app)
+        public static void UseSwaggerExtension(this IApplicationBuilder app, IConfiguration configuration)
         {
+            var swaggerSettings = configuration.GetSection(nameof(SwaggerSettings)).Get<SwaggerSettings>();
+
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Core31StarterKit.WebApi");
+                c.SwaggerEndpoint(swaggerSettings.Url, swaggerSettings.Title);
             });
 
         }
 
 
-        public static void UseHealthChecksExtension(this IApplicationBuilder app)
+        public static void UseHealthChecksExtension(this IApplicationBuilder app, IConfiguration configuration)
         {
+            var healthCheckSettings = configuration.GetSection(nameof(HealthCheckSettings)).Get<HealthCheckSettings>();
+
             app.UseHealthChecksUI(options =>
             {
-                options.UIPath = "/healthcheck-ui";
-                options.ApiPath = "/healthcheck";
-            });
-           
+                options.UIPath = healthCheckSettings.UIPath;
+                options.ApiPath = healthCheckSettings.ApiPath;
+            });           
         }
 
     }
